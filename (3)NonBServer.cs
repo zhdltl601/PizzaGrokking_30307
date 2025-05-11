@@ -86,13 +86,13 @@ namespace _3_Pizza_NonB
 
             try
             {
-                while (true)
-                {
-                    Accept();
+                while (true)        // 폴링 반복문
+                {                   // 입출력 연산(accept(), send(), read() 이 성공할 때까지 연산 반복
+                    Accept();       // 만약 소켓에 데이터가 없으면 대기하지 않고 넘어감
 
-                    foreach (var client in new List<Socket>(clients))
+                    foreach (var client in new List<Socket>(clients))   
                     {
-                        Serve(client);
+                        Serve(client);  // 만약 소켓에 데이터가 없으면 대기하지 않고 넘어감
                     }
 
                     Thread.Sleep(1); // avoid 100% CPU usage
