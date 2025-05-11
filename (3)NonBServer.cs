@@ -19,8 +19,8 @@ namespace _3_Pizza_NonB
 
                 serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, PORT));
-                serverSocket.Listen(1000);      // 대기 클라이언트 최대 1000
-                serverSocket.Blocking = false;  // non-blocking accept
+                serverSocket.Listen(1000);      // 클라이언트 소켓 대기열 최대 1000 
+                serverSocket.Blocking = false;  // 서버 소켓 : 블로킹 off!
             }
             catch (SocketException)
             {
@@ -34,7 +34,7 @@ namespace _3_Pizza_NonB
             try
             {
                 Socket clientSocket = serverSocket.Accept();
-                clientSocket.Blocking = false;      // 서버소켓 : 블로킹 off!
+                clientSocket.Blocking = false;      // 클라이언트소켓 : 블로킹 off!
                 clients.Add(clientSocket);
                 Console.WriteLine($"Connected to {clientSocket.RemoteEndPoint}");
             }
